@@ -1,0 +1,13 @@
+Forums:
+django-machina
+pip :: http://pypi.python.org/pypi/django-machina
+web :: https://django-machina.readthedocs.io/en/latest/
+git :: https://github.com/ellmetha/django-machina
+doc :: https://django-machina.readthedocs.io/en/latest/
+
+Blog:
+mezzanine
+web :: http://mezzanine.jupo.org
+pip :: http://pypi.python.org/pypi/Mezzanine/
+git :: https://github.com/stephenmcd/mezzanine
+doc :: http://mezzanine.jupo.org/docs/
