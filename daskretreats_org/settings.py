@@ -1,6 +1,6 @@
 
 from __future__ import absolute_import, unicode_literals
-import os
+import os, inspect
 
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
@@ -15,8 +15,8 @@ with open("/home/dask/www/secrets/postgres_key") as postgres_key_file:
 PREPEND_WWW = True
 TEST_SERVER = False
 
-workingDirectory = os.getcwd()
-pathList = workingDirectory.split("/")
+runningFilePath = os.path.abspath(inspect.getfile(inspect.currentframe()))
+pathList = runningFilePath.split("/")
 if pathList[3] is "test":
     DEBUG = True
     databaseName = "test_daskretreats_org"
