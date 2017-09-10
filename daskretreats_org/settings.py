@@ -13,6 +13,15 @@ with open("/home/dask/www/secrets/postgres_key") as postgres_key_file:
     POSTGRES_KEY = postgres_key_file.read().strip()
 
 PREPEND_WWW = True
+TEST_SERVER = False
+
+workingDirectory = os.getcwd()
+pathList = workingDirectory.split("/")
+if pathList[3] is "test":
+    DEBUG = True
+    databaseName = "test_daskretreats_org"
+else:
+    databaseName = "daskretreats_org"
 
 ######################
 # MEZZANINE SETTINGS #
@@ -126,11 +135,6 @@ LANGUAGES = (
     ('en', _('English')),
 )
 
-# A boolean that turns on/off debug mode. When set to ``True``, stack traces
-# are displayed for error pages. Should always be set to ``False`` in
-# production. Best set to ``True`` in local_settings.py
-DEBUG = False
-
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
@@ -156,7 +160,7 @@ DATABASES = {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         # DB name or path to database file if using sqlite3.
-        "NAME": "daskretreats_org",
+        "NAME": databaseName,
         # Not used with sqlite3.
         "USER": "dask",
         # Not used with sqlite3.
