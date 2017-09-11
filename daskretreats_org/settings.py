@@ -21,12 +21,13 @@ PROJECT_ROOT        = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
 SERVER_ROOT         = os.path.dirname(os.path.dirname(PROJECT_ROOT))
 
 # Git revision/branch checking
-repo        = git.Repo.init(PROJECT_ROOT)
-commit      = repo.commit()
-nameRev     = str(commit.name_rev)
-nameRevList = nameRev.split()
-commitID    = nameRevList[0]
-branchName  = nameRevList[1]
+repo            = git.Repo.init(PROJECT_ROOT)
+commit          = repo.commit()
+nameRev         = str(commit.name_rev)
+nameRevList     = nameRev.split()
+commitID        = nameRevList[0]
+branchName      = nameRevList[1]
+commmitMessage  = commit.message
 
 # Determine which database to use based on branchName.
 if branchName is "master":
