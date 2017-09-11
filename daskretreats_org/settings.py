@@ -1,6 +1,6 @@
 
 from __future__ import absolute_import, unicode_literals
-import os, git, urllib, pycurl
+import os, git, urllib, requests
 
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
@@ -366,15 +366,11 @@ except ImportError:
 else:
     set_dynamic_settings(globals())
 
-# Curl deploy notice for rollbar
-curl = pycurl.Curl()
-curl.setopt(curl.URL, "https://api.rollbar.com/api/1/deploy/")
-postData = {
+# Notify rollbar of new deploy for deploy tracking
+requestData = {
     "access_token": ROLLBAR_KEY,
-    "environment": 'development' if DEBUG else 'production',
+    "environment": "development" if DEBUG else "production",
     "revision": commitID,
+    "comment": commitMessage,
 }
-postFields = urllib.urlencode(postData)
-curl.setopt(curl.POSTFIELDS, postFields)
-curl.perform()
-curl.close()
+request = requests.post("https://api.rollbar.com/api/1/deploy/", requestData)
