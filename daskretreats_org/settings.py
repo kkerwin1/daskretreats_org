@@ -1,6 +1,6 @@
 
 from __future__ import absolute_import, unicode_literals
-import os, inspect
+import os, git, urllib, pycurl
 
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
@@ -13,15 +13,27 @@ with open("/home/dask/www/secrets/postgres_key") as postgres_key_file:
     POSTGRES_KEY = postgres_key_file.read().strip()
 
 PREPEND_WWW = True
-TEST_SERVER = False
 
-runningFilePath = os.path.abspath(inspect.getfile(inspect.currentframe()))
-pathList = runningFilePath.split("/")
-if pathList[3] is "test":
-    DEBUG = True
-    databaseName = "test_daskretreats_org"
-else:
+# Full filesystem path to the project.
+PROJECT_APP_PATH    = os.path.dirname(os.path.abspath(__file__))
+PROJECT_APP         = os.path.basename(PROJECT_APP_PATH)
+PROJECT_ROOT        = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
+SERVER_ROOT         = os.path.dirname(os.path.dirname(PROJECT_ROOT))
+
+# Git revision/branch checking
+repo        = git.Repo.init(PROJECT_ROOT)
+commit      = repo.commit()
+nameRev     = str(commit.name_rev)
+nameRevList = nameRev.split()
+commitID    = nameRevList[0]
+branchName  = nameRevList[1]
+
+# Determine which database to use based on branchName.
+if branchName is "master":
     databaseName = "daskretreats_org"
+else:
+    databaseName = "test_daskretreats_org"
+    DEBUG = True
 
 ######################
 # MEZZANINE SETTINGS #
@@ -177,11 +189,6 @@ DATABASES = {
 # PATHS #
 #########
 
-# Full filesystem path to the project.
-PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
-PROJECT_APP = os.path.basename(PROJECT_APP_PATH)
-PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
-
 # Every cache key will get prefixed with this value - here we set it to
 # the name of the directory the project is in to try and use something
 # project specific.
@@ -195,7 +202,7 @@ STATIC_URL = "/static/"
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join("/home/dask/www/html/static")
+STATIC_ROOT = os.path.join(SERVER_ROOT, "html/static")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -204,7 +211,7 @@ MEDIA_URL = STATIC_URL + "/media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join("/home/dask/www/html/media")
+MEDIA_ROOT = os.path.join(SERVER_ROOT, "html/media")
 
 # Package/module name to import the root urlpatterns from for the project.
 ROOT_URLCONF = "%s.urls" % PROJECT_APP
@@ -282,7 +289,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     "mezzanine.core.request.CurrentRequestMiddleware",
     "mezzanine.core.middleware.RedirectFallbackMiddleware",
     "mezzanine.core.middleware.TemplateForDeviceMiddleware",
@@ -291,6 +297,9 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.SitePermissionMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
+
+    # Rollbar
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
 
 # Store these package names here as they may change in the future since
@@ -310,6 +319,12 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
+
+ROLLBAR = {
+    'access_token': ROLLBAR_KEY,
+    'environment': 'development' if DEBUG else 'production',
+    'branch': branchName,
+}
 
 ##################
 # LOCAL SETTINGS #
@@ -350,3 +365,16 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+# Curl deploy notice for rollbar
+curl = pycurl.Curl()
+curl.setopt(curl.URL, "https://api.rollbar.com/api/1/deploy/")
+postData = {
+    "access_token": ROLLBAR_KEY,
+    "environment": 'development' if DEBUG else 'production',
+    "revision": commitID,
+}
+postFields = urllib.urlencode(postData)
+curl.setopt(curl.POSTFIELDS, postFields)
+curl.perform()
+curl.close()
