@@ -27,7 +27,7 @@ nameRev         = str(commit.name_rev)
 nameRevList     = nameRev.split()
 commitID        = nameRevList[0]
 branchName      = nameRevList[1]
-commmitMessage  = commit.message
+commitMessage  = commit.message
 
 # Determine which database to use based on branchName.
 if branchName is "master":
