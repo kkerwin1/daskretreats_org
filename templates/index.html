@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+<h2>What is DASK?</h2>
+<p>
+DASK, or Divorced and Separated Koinonia, is a retreat designed by and for
+people who have experienced divorce and separation. It is founded in the
+Catholic religious tradition, but all are welcome. DASK is based on the popular
+Koinonia retreat.
+</p>
+<h2>What is Koinonia?</h2>
+<p>
+Koinonia is retreat program that is popular nation-wide, but was first founded
+in Springfield, IL for adults. The word "koinonia" itself comes from the Greek
+word for "community". The Koinonia retreat is run by many parishes, diocese,
+and college campuses in order to form communities and friendships based in
+Christ. DASK finds that the focus on community is helpful to people going
+divorce and/or separation; we often feel "alone" going through this process.
+</p>
+<p>
+The theme of every DASK weekend is the Paschal Mystery; that is, the life,
+death, and resurrection of Jesus.
+</p>
+<h2>Where can I get more information?</h2>
+  <li>Download our <a href="static/img/dask_brochure_2017.pdf">brochure</a>.</li>
+  <li>Like our <a href="https://www.facebook.com/daskkoinonia">Facebook page</a>.</li>
+  <li>Email us at <a href="mailto:octoberdask@gmail.com">octoberdask@gmail.com</a>.</li>
+<h2>How do I sign up?</h2>
+<p>
+Download our brochure, complete the application inside, and submit it. We host
+two retreat weekends a year: in the Spring at Columbia, IL, and in the Fall at
+Springfield, IL.
+</p>
+{% endblocktrans %}
+{% endblock %}

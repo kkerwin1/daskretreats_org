@@ -12,7 +12,9 @@ with open("/home/dask/www/secrets/rollbar_key") as rollbar_key_file:
 with open("/home/dask/www/secrets/postgres_key") as postgres_key_file:
     POSTGRES_KEY = postgres_key_file.read().strip()
 
-PREPEND_WWW = True
+PREPEND_WWW     = True
+SITE_TITLE      = "DASK"
+SITE_TAGLINE    = "Divorced and Separated Koinonia"
 
 # Full filesystem path to the project.
 PROJECT_APP_PATH    = os.path.dirname(os.path.abspath(__file__))
