@@ -127,6 +127,8 @@ USE_MODELTRANSLATION = False
 ALLOWED_HOSTS = [
 	"www.daskretreats.org",
 	"www.daskretreats.com",
+    "www.daskretreats.org:8000",
+    "daskretreats.org:8000"
 ]
 
 # Local time zone for this installation. Choices can be found here:
