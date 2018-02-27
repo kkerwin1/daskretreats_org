@@ -1,0 +1,54 @@
+body {
+  background-color: #002171;
+  color: white;
+}
+
+article {
+  background-color: #8e8e8e;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  color: white;
+}
+
+section {
+  background-color: #616161;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.col-md-7 {
+  background-color: #373737;
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* unvisited link */
+a:link {
+  color: #fcd734;
+}
+
+/* visited link */
+
+a:visited {
+  color: #002171;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.navbar-header {
+    background-color: #616161;
+}
+
+.navbar-nav {
+    background-color: #616161;
+    color: white;
+}
