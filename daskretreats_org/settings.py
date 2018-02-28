@@ -14,7 +14,7 @@ with open("/home/dask/www/secrets/postgres_key") as postgres_key_file:
 
 PREPEND_WWW     = True
 SITE_TITLE      = "DASK"
-SITE_TAGLINE    = "Divorced and Separated Koinonia"
+SITE_TAGLINE    = "Turning dusks into new dawns"
 
 # Full filesystem path to the project.
 PROJECT_APP_PATH    = os.path.dirname(os.path.abspath(__file__))
