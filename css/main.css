@@ -31,7 +31,7 @@ section {
   border-radius: 25px;
 }
 
-.navbar {
+.navbar.container {
   background-color: #616161;
   color: white;
 }
