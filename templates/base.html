@@ -93,11 +93,13 @@
 
 <h1>{% block title %}{% endblock %}</h1>
 
+<!-->
 <ul class="breadcrumb">
 {% spaceless %}
 {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
 {% endspaceless %}
 </ul>
+<!-->
 
 </div>
 
@@ -106,18 +108,21 @@
 <div class="row">
   <br>row</br>
 
+<!-->
 <div class="col-md-2 left">
   <br>col-md-2</br>
     {% block left_panel %}
     <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
     {% endblock %}
 </div>
+<!-->
 
 <div class="col-md-7 middle">
   <br>col-md-7</br>
     {% block main %}{% endblock %}
 </div>
 
+<!-->
 <div class="col-md-3 right">
   <br>col-md-3</br>
     {% nevercache %}
@@ -136,6 +141,7 @@
     </div>
     </div>
 </div>
+<!-->
 
 </div>
 </div>
