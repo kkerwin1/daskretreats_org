@@ -76,6 +76,11 @@
 </div>
 -->
 
+<header>
+  <h1>DASK: Divorced and Separated Koinonia</h1>
+  <br text-decoration: italic>Turning the dusk of divorce into new dawns.</br>
+</header>
+
 <div class="container">
 
 {% nevercache %}
@@ -103,10 +108,12 @@
 
 </div>
 
+<!--
 <div class="container">
   <br>container</br>
 <div class="row">
   <br>row</br>
+-->
 
 <!--
 <div class="col-md-2 left">
@@ -117,10 +124,16 @@
 </div>
 -->
 
+<!--
 <div class="col-md-7 middle">
   <br>col-md-7</br>
     {% block main %}{% endblock %}
 </div>
+-->
+
+<main>
+  {% block main %}{% endblock %}
+</main>
 
 <!--
 <div class="col-md-3 right">
@@ -143,14 +156,17 @@
 </div>
 -->
 
+<!--
 </div>
 </div>
+-->
 
 <footer>
   <a href="https://www.facebook.com/daskretreats"><img src="static/img/social_icons/if_facebook_410527.png" alt="facebook"></a>
   <a href="https://www.twitter.com/daskretreats"><img src="static/img/social_icons/if_twitter_410515.png" alt="twitter"></a>
   <a href="https://www.instagram.com/daskretreats"><img src="static/img/social_icons/if_instagram2_410507.png" alt="instagram"></a>
   <a href="https://github.com/kkerwin1/daskretreats_org"><img src="static/img/social_icons/if_github_410524.png" alt="github"></a>
+  <br>{{ settings.branchName }} : {{ settings.commitID }}</br>
 </footer>
 
 {% block footer_js %}
