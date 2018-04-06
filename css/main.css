@@ -1,6 +1,135 @@
 body {
-  background-color: #0d47a1;
+  background-color: white;
   color: white;
+  padding: 0px;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a:link {
+  color: #fcd734;
+}
+
+a:visited: {
+    color: #fcd734;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  background: url(dask_website_banner.jpg) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  height: 250px;
+  width: 100%;
+  position: relative;
+  padding-bottom: 15px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.top_text {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    position: absolute;
+    top: 0px;
+    left: 15px;
+}
+
+.bottom_text {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #0d47a1;
+    height: 40px;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
+}
+
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.topnav li {
+    float: left;
+}
+
+/* Style the topnav links */
+.topnav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #fcd734;
+    color: black;
+}
+
+main {
+    background-color: #0d47a1;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
+}
+
+.row {
+    display: table;;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.column {
+    padding: 15px;
+    background-color: #373737;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+    margin:15px;
+    float: left;
+}
+
+.left, .right {
+    width: calc(25% - 30px); // Deducted margin space 15+15 = 30px;
+}
+
+/* Middle column */
+.middle {
+    width: calc(50% - 30px); // Deducted margin space 15+15 = 30px;
+}
+
+.card {
+    height: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
 }
 
 article {
@@ -10,6 +139,7 @@ article {
   padding-bottom: 15px;
   padding-left: 15px;
   color: white;
+  margin-top: 15px;
 }
 
 section {
@@ -20,45 +150,14 @@ section {
   padding-left: 15px;
   color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-header, footer {
-  background-color: #616161;
-  margin: auto;
-  text-align: center;
-}
-
-main {
-  background-color: #373737;
-  margin-top: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
   border-radius: 25px;
-  width: 50%;
-  margin: auto;
 }
 
-/* unvisited link */
-a:link {
-  color: #fcd734;
-}
-
-/* visited link */
-
-a:visited {
-  color:  #5472d3;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.navbar-header {
+footer {
     background-color: #616161;
-}
-
-.navbar-nav {
-    background-color: #616161;
-    color: white;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
