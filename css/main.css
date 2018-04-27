@@ -23,7 +23,7 @@ a:hover {
 }
 
 header {
-  background: url(dask_website_banner.jpg) center;
+  background: url(/static/img/dask_website_banner.jpg) center;
   background-size: cover;
   background-repeat: no-repeat;
   text-align: center;
