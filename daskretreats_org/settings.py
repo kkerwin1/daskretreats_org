@@ -14,7 +14,7 @@ with open("/home/dask/www/secrets/postgres_key") as postgres_key_file:
 
 PREPEND_WWW     = True
 SITE_TITLE      = "DASK"
-SITE_TAGLINE    = "Divorced and Separated Koinonia"
+SITE_TAGLINE    = "Turning dusks into new dawns"
 
 # Full filesystem path to the project.
 PROJECT_APP_PATH    = os.path.dirname(os.path.abspath(__file__))
@@ -127,6 +127,16 @@ USE_MODELTRANSLATION = False
 ALLOWED_HOSTS = [
 	"www.daskretreats.org",
 	"www.daskretreats.com",
+    "www.daskretreats.org:8000",
+    "daskretreats.org:8000",
+    u"daskretreats.org",
+    u"daskretreats.org:8000",
+    u"www.daskretretas.org",
+    u"www.daskretreats.com",
+    u"daskretreats.com",
+    u"www.daskretreats.com:8000",
+    u"www.daskretreats.org:8000",
+    u"daskretreats.com:8000",
 ]
 
 # Local time zone for this installation. Choices can be found here:
