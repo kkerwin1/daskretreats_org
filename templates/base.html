@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+<link rel="stylesheet" href="{% static "css/main.css" %}">
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
 {% endif %}
@@ -48,27 +49,17 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">{% trans "Toggle Navigation" %}</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    {% block navbar_title %}
-    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
-    {% endblock%}
-</div>
-<div class="navbar-collapse collapse">
-    {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
-    {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
-</div>
-</div>
-</div>
+  <header>
+      <h1 class="top_text">DASK</h1>
+      <h2 class="bottom_text">Turning the dusk of divorce into new dawn.</h3>
+  </header>
+  <nav class="topnav">
+      <ul>
+          <li><a href="/">Home</a>
+      </ul>
+  </nav>
 
+<!--
 <div class="container">
 
 {% nevercache %}
@@ -83,69 +74,63 @@
 </div>
 {% endif %}
 {% endnevercache %}
+-->
 
-<h1>{% block title %}{% endblock %}</h1>
+<main class="row">
 
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
+  <section class="column left">
+    <section>
+      <article class="card">
+        <h4>Profile</h4>
+        <p>Coming soon</p>
+      </article>
+      <article class="card">
+        <h4>Forum Posts</h4>
+        <p>Coming soon</p>
+      </article>
+    </section>
+    <section style="margin-top: 15px">
+      <h3>Events</h3>
+      <p>Coming soon</p>
+    </section>
+  </section>
 
-</div>
+  <section class="column middle">
+    <section>
+      {% block content %}{% endblock %}
+    </section>
+  </section>
 
-<div class="container">
-<div class="row">
-
-<div class="col-md-2 left">
-    {% block left_panel %}
-    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
-    {% endblock %}
-</div>
-
-<div class="col-md-7 middle">
-    {% block main %}{% endblock %}
-</div>
-
-<div class="col-md-3 right">
-    {% nevercache %}
-    {% include "includes/language_selector.html" %}
-    {% include "includes/user_panel.html" %}
-    {% endnevercache %}
-    <div class="panel panel-default">
-    <div class="panel-body">
-    {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
-    {% endblock %}
-    </div>
-    </div>
-</div>
-
-</div>
-</div>
+  <section class="column right">
+    <section>
+      <h4>Donate</h4>
+      <p>Coming soon</p>
+    </section>
+    <section style="margin-top: 15px">
+      <article class="card">
+        <h4>Twitter</h4>
+        <p>Coming soon</p>
+      </article>
+      <article class="card">
+        <h4>News</h4>
+        <p>Coming soon</p>
+      </article>
+    </section>
+  </section>
+</main>
 
 <footer>
-<div class="container">
-{% page_menu "pages/menus/footer.html" %}
-
-<div class="row">
-<p class="site-info text-center">
-    {% trans "Powered by" %}
-    <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
-    <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
-    {% trans "and" %}
-    <a href="http://www.djangoproject.com">Django</a>
-    <span class="separator">|</span>
-    {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>
-    {% ifinstalled mezzanine.mobile %}
-    <span class="separator">|</span>
-    <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
-    {% endifinstalled %}
-</p>
-</div>
-</div>
+  <p>
+    Copyright (C) 2018: Divorced and Separated Koinonia, under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>.
+    <br><a href="daskretreats@gmail.com.com">daskretreats@gmail.com</a>
+  </p>
+  <p>
+    <a href="https://www.facebook.com/daskretreats"><img src="static/img/social_icons/if_facebook_410527.png" alt="facebook"></a>
+    <a href="https://www.twitter.com/daskretreats"><img src="static/img/social_icons/if_twitter_410515.png" alt="twitter"></a>
+    <a href="https://www.instagram.com/daskretreats"><img src="static/img/social_icons/if_instagram2_410507.png" alt="instagram"></a>
+    <a href="https://github.com/kkerwin1/daskretreats_org"><img src="static/img/social_icons/if_github_410524.png" alt="github"></a>
+    <br>{{ settings.branchName }} : {{ settings.commitID }}</br>
+  </p>
 </footer>
 
 {% block footer_js %}
