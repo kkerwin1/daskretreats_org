@@ -14,7 +14,7 @@ idna==2.5
 Mezzanine==4.2.3
 oauthlib==2.0.2
 olefile==0.44
-Pillow==4.2.1
+Pillow==6.2.0
 psycopg2==2.7.3
 pytz==2017.2
 requests==2.18.3
